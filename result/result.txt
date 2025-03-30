@@ -1,0 +1,3 @@
+ congress = 12
+ communist = 12
+ bjp = 12
