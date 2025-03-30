@@ -1,0 +1,100 @@
+
+<?php
+set_time_limit(0);
+include("../header_inner.php");
+include("table.php");
+error_reporting(0);
+ob_start();
+session_start();
+//echo "ytyttyytyt".$_SESSION['election_id'];
+$k=0;
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+
+
+  <style>
+  .error
+  {
+	  color:#F00 !important;
+  }
+  .hide
+{
+display:none;	
+}
+  </style>
+  
+</head>
+<body>
+<!--<style>
+div
+{
+text-transform:capitalize;
+margin-bottom:5px;	
+}
+
+</style>-->
+<?php
+
+
+include("../connection.php");
+echo "<div class='col-md-12'>";
+echo "<h1> ELECTION PROCESS</h1>";
+
+
+$rand=rand(1000,9999);
+include('mail.php');
+//echo $_SESSION['email'];
+
+	echo "<div><form action='' method='post'>
+	<input type='hidden' name='otp1' value='$rand'>
+	Enter OTP <a href='' title='$rand'> &nbsp; &nbsp; </a><br>
+	<input type='text' name='otp2' class='form-control' >
+	<br>
+	<input type='submit' name='submit2' value='submit' class='btn btn-danger'>
+	
+	</form>";
+
+if(isset($_POST['submit2']))
+{
+	
+	if($_POST['otp1']==$_POST['otp2'])
+
+	{
+echo"
+<script>
+
+  location.replace('step3.php')
+
+</script>";
+	}
+	else
+	{
+		echo"
+<script>
+
+  location.replace('step2.php')
+
+</script>";
+	}
+	
+
+		//header("location:../voter/facedetect.php?id=$row5[id]&election_id=$_REQUEST[election_id]&vid=$row5[voter_id]");
+		 	
+
+	
+
+	
+}
+?>
+
+  <?php  
+echo "</div>";
+
+
+//include("../footer_inner.php");
+
+?>
+
